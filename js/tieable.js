@@ -1,11 +1,10 @@
-'use strict';
-
 (function ($) {
-    var startRow = '<div class="row new" style="display: none"><ul class="tieable"></ul></div>';
-    var endRow = '<div class="row new" style="display: none"><ul class="tieable"></ul></div>';
+    'use strict';
+    var betweenRow = '<div class="row" style="display: none"><ul class="tieable"></ul></div>';
     $.fn.tieable = function (options) {
         var sortable, onSortUpdate;
-        this.closest('.row').before(startRow).after(endRow).siblings().show().removeClass('new');
+        this.closest('.row').before(betweenRow).after(betweenRow).siblings().show();
+        $('ul.tieable').removeClass('first last').first().addClass('first').end().last().addClass('last');
         sortable = this.sortable.apply($(this.selector), arguments);
         
         onSortUpdate = function(e, ui) {
@@ -21,28 +20,26 @@
             ui.endparent contains the element that the dragged item was added to
 
             */
-            // If the start is now empty, remove that row
+            // If the start is now empty, remove that row and one of the adjacent between rows
             if($(ui.startparent).children().length === 0) {
-                $(ui.startparent).closest('.row').hide('fast', function(){ $(ui.startparent).closest('.row').remove(); })
-                //$(ui.startparent).closest('.row').remove();
+                // This looks at both the next and previous between row and gets the first empty one to hide
+                $(ui.startparent).closest('.row').next().not(':has(li)').add($(ui.startparent).closest('.row').prev().not(':has(li)')).first().addClass('hiding').hide('fast', function(){ $(this).remove(); });
+                $(ui.startparent).closest('.row').addClass('hiding').hide('fast', function(){ $(this).remove(); });
                 reload = true;
             }
             
-            // If you filled the first row, add a new first row
-            if($('.tieable').index(ui.endparent) === 0) {
-                $(ui.endparent).closest('.row').before(startRow);
-                $(ui.endparent).closest('.row').siblings().show('fast');
+            // If you added to a previously empty row, add the new between rows for that.
+            if($(ui.endparent).children().length === 1 && !$(ui.endparent).is(ui.startparent)) {
+                $(ui.endparent).closest('.row').before(betweenRow);
+                $(ui.endparent).closest('.row').after(betweenRow);
+                $(ui.endparent).closest('.row').siblings().not('.hiding').show('fast');
                 reload = true;
             }
-            
-            if($('.tieable').index(ui.endparent) >= $('.tieable').length - 1) {
-                $(ui.endparent).closest('.row').after(endRow);
-                $(ui.endparent).closest('.row').siblings().show('fast');
-                reload = true;
-            }
-            
+
             if(reload) {
-                $('.tieable').off('sortupdate.tie')
+                $('ul.tieable').removeClass('first last').not('.hiding ul').first().addClass('first').end().last().addClass('last');
+                $('.row').removeClass('vote').has('ul li').first().addClass('vote');
+                $('.tieable').off('sortupdate.tie');
                 sortable = $('.tieable').sortable($.extend({
                     method: 'reload'
                 }, options));

@@ -1,25 +1,43 @@
 .tieable li {
-    list-style: none;
-    float: left;
-    border: 1px solid #CCC;
-    background: #F6F6F6;
-    line-height: 40px;
-    height: 40px;
-    text-align: center;
+  list-style: none;
+  float: left;
+  border: 1px solid #CCC;
+  background: #F6F6F6;
+  line-height: 148px;
+  height: 150px;
+  text-align: center;
+}
+
+.tieable li.thumb {
+  border: none;
+  background-color: transparent;
 }
 
 .tieable {
-    min-height: 40px;
+  min-height: 50px;
 }
 
-ul:empty {
-    border: 1px dashed #CCC;
+ul.first:empty, ul.last:empty {
+  border: 1px dashed #CCC;
 }
 
 ul {
-    padding: 0;
+  padding: 0;
 }
 
 .row {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.tieable:before,
+.tieable:after {
+  content:"";
+  display:table;
+}
+.tieable:after {
+  clear:both;
+}
+
+.row.vote {
+  background: transparent url("../images/like_large.png") no-repeat right top;
 }

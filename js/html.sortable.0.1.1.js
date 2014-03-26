@@ -111,18 +111,18 @@
             if (thisHeight > draggingHeight) {
               // Dead zone?
               var deadZone = thisHeight - draggingHeight, offsetTop = $(this).offset().top;
-              if (placeholder.index() < $(this).index() && e.originalEvent.pageY < offsetTop + deadZone) {
+              if ($('.sortable-placeholder').index() < $(this).index() && e.originalEvent.pageY < offsetTop + deadZone) {
                 return false;
               }
-              else if (placeholder.index() > $(this).index() && e.originalEvent.pageY > offsetTop + thisHeight - deadZone) {
+              else if ($('.sortable-placeholder').index() > $(this).index() && e.originalEvent.pageY > offsetTop + thisHeight - deadZone) {
                 return false;
               }
             }
 
             dragging.hide();
-            $(this)[placeholder.index() < $(this).index() ? 'after' : 'before'](placeholder);
+            $(this)[$('.sortable-placeholder').index() < $(this).index() ? 'after' : 'before'](placeholder);
             placeholders.not(placeholder).detach();
-          } else if(Array.prototype.every.call($('.sortable-placeholder'), function (ph) {
+          } else if(!$(this).find('li').last().is('.sortable-placeholder') && Array.prototype.every.call($('.sortable-placeholder'), function (ph) {
             var x = e.originalEvent.pageX,
                 y = e.originalEvent.pageY,
                 ph = $(ph),
