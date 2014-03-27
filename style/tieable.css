@@ -1,20 +1,30 @@
 .tieable li {
   list-style: none;
-  float: left;
   border: 1px solid #CCC;
-  background: #F6F6F6;
-  line-height: 148px;
-  height: 150px;
+  background: rgba(246, 246, 246, 0.95);
+  line-height: 98px;
+  height: 100px;
   text-align: center;
 }
 
 .tieable li.thumb {
   border: none;
-  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (min-width:768px) {
+  .tieable li.thumb {
+    background-color: transparent;
+  }
+}
+
+.tieable li.thumb img {
+  height: 100px;
 }
 
 .tieable {
-  min-height: 50px;
+  min-height: 35px;
 }
 
 ul.first:empty, ul.last:empty {

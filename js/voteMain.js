@@ -2,7 +2,7 @@
 $(document).ready(function() {
     $('.tieable').tieable({
         connectWith: '.tieable',
-        placeholder: '<li class="col-sm-2 sortable-placeholder">'
+        placeholder: '<li class="col-sm-2 sortable-placeholder" />'
     });
     
     $('form').submit(function(event) {
