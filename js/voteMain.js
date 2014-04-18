@@ -6,7 +6,7 @@ $(document).ready(function() {
     });
     
     $('form').submit(function(event) {
-        var li, tier, vote = [], reqData = {}, action = 'vote';
+        var li, tier, vote = [], reqData = {}, action = '/api/vote';
         event.preventDefault();
         
         $('.tieable').each(function(i, list) {

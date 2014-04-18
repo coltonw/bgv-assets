@@ -2,7 +2,7 @@
 $(document).ready(function() {
     
     $('form').submit(function(event) {
-        var id, ballot = [], reqData = {}, action = 'ballot';
+        var id, ballot = [], reqData = {}, action = '/api/ballot';
         event.preventDefault();
         
         $(':checked').each(function(i, checkbox) {
