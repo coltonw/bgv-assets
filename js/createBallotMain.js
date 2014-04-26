@@ -14,8 +14,17 @@ $(document).ready(function() {
             });
         });
         console.log(ballot);
+        reqData.name = $('#inputName').val();
         reqData.ballot = ballot;
         action = $('[name=action]').val();
+        if(!reqData.name || reqData.name === '') {
+            alert("Don't forget to add a name to the ballot!");
+            return;
+        }
+        if(ballot.length < 5) {
+            alert("You need to choose more games than that!");
+            return;
+        }
         $.ajax({
             type: "POST",
             url: action,
