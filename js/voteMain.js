@@ -1,14 +1,17 @@
 // index.dust main js
 $(document).ready(function() {
-    $('.tieable').tieable({
+    /*$('.tieable').tieable({
         connectWith: '.tieable',
         placeholder: '<li class="col-sm-2 sortable-placeholder" />'
+    });*/
+    $('.tieable').rankem({
+        ties: true
     });
-    
+
     $('form').submit(function(event) {
         var li, tier, vote = [], reqData = {}, action = '/api/vote';
         event.preventDefault();
-        
+
         $('.tieable').each(function(i, list) {
             li = $(list).children();
             console.log

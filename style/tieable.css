@@ -1,5 +1,4 @@
-.tieable li {
-  list-style: none;
+.tieable div.kem-item {
   border: 1px solid #CCC;
   background: rgba(246, 246, 246, 0.95);
   line-height: 98px;
@@ -7,19 +6,19 @@
   text-align: center;
 }
 
-.tieable li.thumb {
+.tieable div.thumb {
   border: none;
   padding-left: 0;
   padding-right: 0;
 }
 
 @media (min-width:768px) {
-  .tieable li.thumb {
+  .tieable div.thumb {
     background-color: transparent;
   }
 }
 
-.tieable li.thumb img {
+.tieable div.thumb img {
   height: 100px;
 }
 
@@ -35,7 +34,7 @@ ul {
   padding: 0;
 }
 
-.row {
+.row, div.kem-rank {
   margin-bottom: 10px;
 }
 
