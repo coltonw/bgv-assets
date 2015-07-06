@@ -31,6 +31,7 @@
 
 .kem-drag-onto-top.kem-dragging-over .kem-arrow {
   background-image: url(../images/arrow-top.png);
+  bottom: 0;
 }
 
 .kem-drag-onto-between.kem-dragging-over .kem-arrow {
