@@ -12,9 +12,8 @@ $(document).ready(function() {
         var li, tier, vote = [], reqData = {}, action = '/api/vote';
         event.preventDefault();
 
-        $('.tieable').each(function(i, list) {
+        $('.tieable .kem-rank').each(function(i, list) {
             li = $(list).children();
-            console.log
             if(li.length > 0) {
                 tier = [];
                 li.each(function(i, el){

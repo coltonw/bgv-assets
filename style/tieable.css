@@ -34,7 +34,11 @@ ul {
   padding: 0;
 }
 
-.row, div.kem-rank {
+div.kem-rank {
+  margin-bottom: 60px;
+}
+
+.row, div.kem-rank:last-child {
   margin-bottom: 10px;
 }
 
@@ -47,6 +51,6 @@ ul {
   clear:both;
 }
 
-.row.vote {
+.row.vote, .kem-rank:first-child {
   background: transparent url("../images/like_large.png") no-repeat right top;
 }
