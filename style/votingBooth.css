@@ -22,18 +22,6 @@
   height: 100px;
 }
 
-.tieable {
-  min-height: 35px;
-}
-
-ul.first:empty, ul.last:empty {
-  border: 1px dashed #CCC;
-}
-
-ul {
-  padding: 0;
-}
-
 div.kem-rank {
   margin-bottom: 60px;
 }
@@ -42,15 +30,15 @@ div.kem-rank {
   margin-bottom: 10px;
 }
 
-.tieable:before,
-.tieable:after {
-  content:"";
-  display:table;
-}
-.tieable:after {
-  clear:both;
-}
-
 .row.vote, .kem-rank:first-child {
   background: transparent url("../images/like_large.png") no-repeat right top;
+}
+
+.kem-drag-onto-between.kem-dragging-over .kem-arrow {
+  top: 50%;
+  margin-top: -10px;
+}
+
+.kem-drag-onto-on.kem-dragging-over .kem-arrow {
+  margin-top: 40px;
 }
